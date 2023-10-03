@@ -27,7 +27,22 @@ start.addEventListener("change", (e)=>{
     console.log(day);
     console.log(tomorrow);
     end.value = tomorrow
-   
-
- 
 })
+
+const bookingTotal = () => {
+    let date1 = new Date(start.value)
+    let date2 = new Date(end.value)
+    let diffTime = Math.abs(date1 - date2)
+
+    let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 *24))
+    let nightPrice = document.getElementById("nightPrice").textContent;
+
+    console.log(diffDays);
+    console.log(nightPrice);
+    let total = nightPrice * diffDays;
+    document.getElementById("total").textContent = total;
+
+}
+// bookingTotal()
+start.addEventListener("change", ()=> bookingTotal())
+end.addEventListener("change", ()=> bookingTotal())
